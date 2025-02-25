@@ -15,17 +15,29 @@ class Calc{
         else
             System.out.printf("(%f + %f) / (%f - %f) = %f \n", this.a, this.b, this.a, this.b, (this.a + this.b) / (this.a - this.b));
     }
-    int Y() {
-        if (this.b == 0) {
-            return -1;
+     //    int Y() {
+//        if (this.b == 0) {
+//            return -1;
+//        }
+//        return (int) Math.round(this.a * this.x / this.b);
+//    }
+//    int third(int y){
+//        if(y==1||y==0){
+//            return 1;
+//        }
+//        return y*third(y-1);
+//    }
+    void third() {
+        int y = (int) Math.round(this.a * this.x / this.b);
+        if (y == 0) System.out.println(1);
+        else if (this.b == 0|| y<0 )System.out.println("Не определен");
+        else {
+            int F = 1;
+            for (int i = 1; i <= y; i++) {
+                F *= i;
+            }
+            System.out.printf("%f * %f/ %f! = %d", this.a, this.x, this.b,F);
         }
-        return (int) Math.round(this.a * this.x / this.b);
-    }
-    int third(int y){
-        if(y==1||y==0){
-            return 1;
-        }
-        return y*third(y-1);
     }
 }
 public class Main {
@@ -39,7 +51,8 @@ public class Main {
         Calc nums = new Calc(x,a,b);
         nums.first();
         nums.second();
-        System.out.printf("%f * %f/ %f! = %d",nums.a,nums.x,nums.b, nums.third(nums.Y()));
+        nums.third();
+       // System.out.printf("%f * %f/ %f! = %d",nums.a,nums.x,nums.b, nums.third(nums.Y()));
     }
     public static double vvod(){
         Scanner in = new Scanner(System.in);
